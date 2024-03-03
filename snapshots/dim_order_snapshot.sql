@@ -9,7 +9,13 @@
             check_cols=['status']
         )
     }}
-    
-    select * from {{ ref('dim_order') }}
+
+    select
+        order_key,
+        order_number,
+        order_line_number,
+        order_date,
+        status
+    from {{ ref('dim_order') }}
 
 {% endsnapshot %}

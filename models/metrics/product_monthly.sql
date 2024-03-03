@@ -7,7 +7,7 @@ with product_metrics as (
 
     select *
     from
-    {{ 
+    {{
         metrics.calculate(
             metric('sales'),
             grain='month',
@@ -22,14 +22,21 @@ with product_metrics as (
                 metrics.rolling(aggregate="average", interval=6),
                 metrics.rolling(aggregate="min", interval=6)
             ],
-        ) 
+        )
     }}
 
 ),
 
 products as (
-
-    select * from {{ ref('dim_product') }}
+    select
+        product_key,
+        product_code,
+        product_name,
+        product_category,
+        msrp,
+        recent_order_date,
+        first_order_date
+    from {{ ref('dim_product') }}
 
 )
 
