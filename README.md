@@ -31,16 +31,21 @@ To run this project (assuming you have dbt installed):
 
 1. Clone this repo
 2. [Set up a profile](https://docs.getdbt.com/reference/profiles.yml) to connect to your database
-3. Run `dbt deps`
-4. Run `dbt build`, which does the following: seed, test, run, snapshot
-5. Run `dbt source freshness`
-6. Run `dbt docs generate`
-7. Run `dbt docs serve` (if you want to run a local docs server)
+3. (Optional) - set up [pre-commit](https://pre-commit.com/)
+   1. install pre-commit
+   2. install [sqlfluff](https://sqlfluff.com/)
+   3. update `.pre-commit-config.yaml` with desired hooks
+   4. run `pre-commit install`
+4. Run `dbt deps`
+5. Run `dbt build`, which does the following: seed, test, run, snapshot
+6. Run `dbt source freshness`
+7. Run `dbt docs generate`
+8. Run `dbt docs serve` (if you want to run a local docs server)
 
 ### dbt Cloud
 
 1. [Login to dbt](https://cloud.getdbt.com/login) or [Signup for a new](https://cloud.getdbt.com/signup/) dbt Account
-    
+
     > Team Account ([free trial](https://www.getdbt.com/pricing/)) is required for BI tools to use the Metadata API
 
     > First time using dbt Cloud? Review the [dbt Cloud Quickstart](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart) guide
