@@ -1,4 +1,4 @@
- -- depends_on: {{ ref('fact_sales') }}
+-- depends_on: {{ ref('fact_sales') }}
 {{ config(
   enabled=false
 ) }}
@@ -7,7 +7,7 @@ with product_metrics as (
 
     select *
     from
-    {{ 
+    {{
         metrics.calculate(
             metric('sales'),
             grain='month',
@@ -22,7 +22,7 @@ with product_metrics as (
                 metrics.rolling(aggregate="average", interval=6),
                 metrics.rolling(aggregate="min", interval=6)
             ],
-        ) 
+        )
     }}
 
 ),
