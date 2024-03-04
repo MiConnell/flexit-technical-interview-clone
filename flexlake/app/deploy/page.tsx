@@ -76,32 +76,33 @@ export default function Deploy() {
       </div>
       {selected === "customer" && (
         <form className="flex flex-col gap-4">
-          <b>enter your database credentials</b>
-          <Input isRequired placeholder="database ip:port" />
-          <Input isRequired placeholder="Enter your admin user name" />
-          <Input isRequired placeholder="Enter your password" type="password" />
           <div className="flex gap-3 justify-center">
-            <Button fullWidth color="primary">
-              Test Connection
-            </Button>
-            <Button fullWidth color="primary">
-              Login
+            <Button
+              fullWidth
+              color="primary"
+              onPress={() =>
+                open(
+                  "https://github.com/flexanalytics/dbt-business-intelligence"
+                )
+              }
+            >
+              Clone this repo to get started!
             </Button>
           </div>
         </form>
       )}
       {selected === "flexit" && (
         <form className="flex flex-col gap-4">
-          <b>sign in to your FlexLake account</b>
-          <Input isRequired placeholder="Enter your email" type="email" />
-          <Input isRequired placeholder="Enter your password" type="password" />
-          <p className="text-center text-small">
-            Need to create an account?{" "}
-            <Button size="sm" onPress={() => setSelected("flexit")}>
-              Sign up
+          <b>provide your datasource credentials</b>
+          <Input isRequired placeholder="server" />
+          <Input isRequired placeholder="port" />
+          <Input isRequired placeholder="database" />
+          <Input isRequired placeholder="admin user" />
+          <Input isRequired placeholder="password" type="password" />
+          <div className="flex gap-3 justify-center">
+            <Button fullWidth color="primary">
+              Test Connection
             </Button>
-          </p>
-          <div className="flex gap-2 justify-end">
             <Button fullWidth color="primary">
               Login
             </Button>
