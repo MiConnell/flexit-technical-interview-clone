@@ -16,7 +16,7 @@ _Bonus: describe how we might be able to host a data Platform as a Service (PaaS
 ### A high-level architecture would be something like:
 
 - a new customer signs up for an account
-- they provide credentials to their source system, preferrably a new user which only exists to read data
+- they provide credentials to their source system, preferably a new user which only exists to read data
 - we create a database for them in snowflake and provide a reader account via terraform
 - data is ingested as a straight copy through either:
   - [confluent kafka](https://www.confluent.io/) for realtime/streaming data
