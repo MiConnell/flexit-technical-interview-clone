@@ -13,6 +13,8 @@ _Walk me through how you would architect a solution that could be deployed as an
 
 _Bonus: describe how we might be able to host a data Platform as a Service (PaaS) where we host the data warehouse infrastructure and ELT processes._
 
+I threw together a small sample nextjs site as a potential frontend (assuming this is a separate product called 'flexlake') https://flexlake-n67b6bssl-miconnell.vercel.app/
+
 ### A high-level architecture would be something like:
 
 - a new customer signs up for an account
