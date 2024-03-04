@@ -9,7 +9,7 @@
             check_cols=['status']
         )
     }}
-    
+
     select * from {{ ref('dim_order') }}
 
 {% endsnapshot %}
