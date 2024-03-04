@@ -17,7 +17,7 @@ _Bonus: describe how we might be able to host a data Platform as a Service (PaaS
 
 - a new customer signs up for an account
 - they provide credentials to their source system, preferably a new user which only exists to read data
-- we create a database for them in snowflake and provide a reader account via terraform
+- we create a database for them in snowflake and provide a [reader account](https://docs.snowflake.com/en/user-guide/data-sharing-reader-create) via terraform
 - data is ingested as a straight copy through either:
   - [confluent kafka](https://www.confluent.io/) for realtime/streaming data
   - fivetran for ease of use connecting
@@ -30,10 +30,12 @@ _Bonus: describe how we might be able to host a data Platform as a Service (PaaS
 **bonus:
 we provide a data catalog for them in addition to dbt documentation with a tool like [amundsen](https://www.amundsen.io/)**
 
+### this is taking the approach of database and infrastructure first with viz as a secondary consideration and can be deployed regardless of viz tool
+
 all of this would happen in one place as an online portal (similar to dbt cloud)
 
 - sql query editor
-- hosted flexit for online vizualization
+- hosted flexit report builder for online vizualization
 - hosted feature-rich documentation
 
 considerations:
