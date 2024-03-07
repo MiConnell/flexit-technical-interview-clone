@@ -1,0 +1,77 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+    - id: detect-private-key
+    - id: mixed-line-ending
+    - id: requirements-txt-fixer
+- repo: local
+  hooks:
+    - id: dbt-parse
+      name: dbt-parse
+      entry: /bin/bash scripts/dbt_parse.sh
+      language: script
+      types_or: ['sql', 'python']
+      verbose: true
+      require_serial: true
+    - id: sqlfluff-lint
+      name: sqlfluff-lint
+      entry: /bin/bash scripts/sqlfluff_lint.sh
+      language: script
+      types_or: ['sql']
+      verbose: true
+      require_serial: true
+    - id: sqlfluff-fix
+      name: sqlfluff-fix
+      entry: /bin/bash scripts/sqlfluff_fix.sh
+      language: script
+      types_or: ['sql']
+      verbose: true
+      require_serial: true
+    - id: dbt-seed
+      name: dbt-seed
+      entry: /bin/bash scripts/dbt_seed.sh
+      language: script
+      types_or: ['csv']
+      verbose: true
+      require_serial: true
+    - id: dbt-run
+      name: dbt-run
+      entry: /bin/bash scripts/dbt_run.sh
+      language: script
+      types_or: ['sql', 'python']
+      verbose: true
+      require_serial: true
+    - id: dbt docs-generate
+      name: dbt-docs-generate
+      entry: /bin/bash scripts/dbt_docs.sh
+      language: script
+      types_or: ['sql', 'python']
+      verbose: true
+      require_serial: true
+    - id: dbt-test
+      name: dbt-test
+      entry: /bin/bash scripts/dbt_test.sh
+      language: script
+      types_or: ['sql', 'python']
+      verbose: true
+      require_serial: true
+- repo: https://github.com/offbi/pre-commit-dbt
+  rev: v1.0.0
+  hooks:
+    - id: check-script-semicolon
+    - id: check-script-has-no-table-name
+      files: ^models/
+    - id: check-model-has-all-columns
+      exclude: ^models/base/
+      files: ^models/
+      args: ['--manifest', 'target/manifest.json', '--catalog', 'target/catalog.json', '--']
+    - id: check-model-columns-have-desc
+      files: ^models/marts/
+      args: ['--manifest', 'target/manifest.json', '--']
+    - id: check-model-has-tests
+      exclude: ^models/base/
+      args: ['--test-cnt', '1', '--manifest', 'target/manifest.json', '--']
